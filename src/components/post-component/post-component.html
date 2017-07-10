@@ -1,0 +1,33 @@
+<ion-card>
+  <div (click)="showPostDetail(post)">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/images/male_avatar.png" style="background-color: #00bcd4">
+      </ion-avatar>
+      <h2>Gaurav Ahuja</h2>
+      <p ion-text style="font-size: 12px;">{{post?.dateCreated | momentsAgo}}</p>
+    </ion-item>
+
+    <img *ngIf="post?.imageLink" src={{post?.imageLink}} style="width: 95%; margin: 0 auto;">
+
+    <ion-card-content>
+      <p>{{post?.content}}</p>
+    </ion-card-content>
+  </div>
+
+  <ion-row>
+    <ion-col center text-center>
+      <button ion-button icon-left clear small (click)="likePost()">
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>{{post?.likesCount}} Likes</div>
+            </button>
+    </ion-col>
+    <ion-col center text-center>
+      <button ion-button icon-left clear small (click)="composeComment()">
+              <ion-icon name="text"></ion-icon>
+              <div>{{post?.commentsCount}} Comments</div>
+            </button>
+    </ion-col>
+  </ion-row>
+
+</ion-card>

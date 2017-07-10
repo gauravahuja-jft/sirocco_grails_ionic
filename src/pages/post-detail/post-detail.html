@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sirocco</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #f5f5f5;">
+  <post-component [post]="post"></post-component>
+
+    <ion-list>
+      <ion-list-header no-margin color="primary">
+        Comments ({{post?.commentsCount}})
+      </ion-list-header>
+      <ion-item *ngFor="let comment of comments" text-wrap>
+        <div class="rant_username">@{{comment?.user.username}} &nbsp;&nbsp;
+          <span class="rant_date">{{comment?.dateCreated | momentsAgo}}</span>
+        </div>
+        <div class="rant_comment">{{comment?.commentText}}</div>
+      </ion-item>
+    </ion-list>
+    
+  <ion-spinner name="bubbles" class="loading_spinner" *ngIf="showSpinner" color="primary">
+  </ion-spinner>
+</ion-content>
